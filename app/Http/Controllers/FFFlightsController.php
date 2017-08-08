@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\models\FFAirlines;
+use App\models\FFAirports;
 use App\models\FFFlights;
 use Illuminate\Routing\Controller;
 
@@ -29,8 +31,13 @@ class FFFlightsController extends Controller {
 	 */
 	public function adminCreate()
 	{
-		//
-	}
+        $configuration ['title'] = "New Flight record";
+        $configuration ['destination'] = FFAirports::pluck('name', 'id')->toArray();
+        $configuration ['origin'] = FFAirports::pluck('name', 'id')->toArray();
+        $configuration ['airline_id'] = FFAirlines::pluck('name', 'id')->toArray();
+
+        return view('admin.adminFormFlights', $configuration);
+    }
 
 	/**
 	 * Store a newly created resource in storage.
@@ -40,7 +47,17 @@ class FFFlightsController extends Controller {
 	 */
 	public function adminStore()
 	{
-		//
+        $data = request()->all();
+
+        FFFlights::create([
+            'airline_id' => $data['airline_id'],
+            'destination' => $data['destination'],
+            'origin' => $data['origin'],
+            'arival' => $data['arival'],
+            'depature' => $data['depature'],
+        ]);
+
+        return redirect(route('app.flights.index'));
 	}
 
 	/**

@@ -10,7 +10,7 @@ class FFFlights extends CoreModel
      * Database table name
      * @var string
      */
-    protected $table = 'ff_airlines';
+    protected $table = 'ff_flights';
     /**
      * Fillable column names
      * @var array
