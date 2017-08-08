@@ -7,8 +7,12 @@
 
         {!! Form::open(['url' => route('app.airports.create')]) !!}
         <br>
-        {{ Form::label('id', 'Custom airport code')}}<br>
+        <div class="form-group">
+        {{ Form::label('id', 'Custom airport code', ['class' => 'col-lg-2 control-label'])}}
+            <div class="col-lg-10">
         {{Form::text('id')}}
+            </div>
+        </div>
         <br>
         {{ Form::label('name', 'Airport name')}}<br>
         {{Form::text('name')}}

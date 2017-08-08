@@ -19,7 +19,7 @@
     {{ Form::select('origin',$origin) }}
     <br>
     {{ Form::label('arival', 'Arrival date')}}<br>
-    {{Form::text('arival')}}
+    {{Form::text('arival' )}}
     <br>
     {{ Form::label('depature', 'Depature date')}}<br>
     {{Form::text('depature')}}

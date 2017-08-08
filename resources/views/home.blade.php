@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
 
-                <div class="panel-body">
+                <div class="panel-body" id="menu">
                         <ul>
                             <a href="{{ url('/admin/airlines/')}}">Airlines</a><br>
                             <a href="{{ url('/admin/airports/')}}">Airports</a><br>
