@@ -38,13 +38,13 @@
                             @if(isset($edit))
 
                                 <td><a href="{{route($edit, [$record['id'], app()->getLocale()])}}"
-                                       class="btn btn-default btn-sm">{{trans('app.edit_record')}}</a>
+                                       class="btn btn-default btn-sm">{{'EDIT'}}</a>
                                 </td>
                             @endif
                             @if(isset($showDelete))
 
                                 <td><a onclick="deleteItem('{{route($showDelete, $record['id'])}}')"
-                                       class="btn btn-info btn-sm">{{trans('app.delete')}}</a>
+                                       class="btn btn-info btn-sm">{{trans('DELETE')}}</a>
                                 </td>
                             @endif
 
