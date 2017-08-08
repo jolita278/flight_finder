@@ -14,7 +14,7 @@
 <main>
     @yield('adminList')
     @yield('adminFormAirports')
-    {{--@yield('adminFormAirlines')--}}
+    @yield('adminFormAirlines')
     {{--@yield('adminFormFlights')--}}
 
 </main>

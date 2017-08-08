@@ -29,7 +29,9 @@ class FFAirlinesController extends Controller {
 	 */
 	public function adminCreate()
 	{
+        $configuration ['title'] = "New Airline record";
 
+        return view('admin.adminFormAirlines', $configuration);
 	}
 
 	/**
@@ -40,7 +42,14 @@ class FFAirlinesController extends Controller {
 	 */
 	public function adminStore()
 	{
-		//
+        $data = request()->all();
+
+        FFAirlines::create([
+            'name' => $data['name'],
+
+        ]);
+
+        return redirect(route('app.airlines.index'));
 	}
 
 	/**

@@ -2,9 +2,8 @@
 
 namespace App\models;
 
-use Illuminate\Database\Eloquent\Model;
 
-class FFAirlines extends Model
+class FFAirlines extends CoreModel
 {
     /**
      * Database table name
