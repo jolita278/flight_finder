@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\models\FFFlights;
 use Illuminate\Routing\Controller;
 
 class FFFlightsController extends Controller {
@@ -10,9 +11,14 @@ class FFFlightsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function adminIndex()
 	{
-		//
+        $configuration ['title'] = "Flights";
+        $configuration ['list'] = FFFlights::get()->toArray();
+        $configuration ['new'] = route('app.flights.create');
+        $configuration ['edit'] = 'app.flights.edit';
+        $configuration ['showDelete'] = 'app.flights.destroy';
+        return view('admin.adminList', $configuration);
 	}
 
 	/**
@@ -21,7 +27,7 @@ class FFFlightsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function adminCreate()
 	{
 		//
 	}
@@ -32,7 +38,7 @@ class FFFlightsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function adminStore()
 	{
 		//
 	}
@@ -44,7 +50,7 @@ class FFFlightsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function adminShow($id)
 	{
 		//
 	}
@@ -56,7 +62,7 @@ class FFFlightsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function adminEdit($id)
 	{
 		//
 	}
@@ -68,7 +74,7 @@ class FFFlightsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function adminUpdate($id)
 	{
 		//
 	}
@@ -80,7 +86,7 @@ class FFFlightsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function adminDestroy($id)
 	{
 		//
 	}

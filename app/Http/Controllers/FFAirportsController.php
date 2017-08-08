@@ -1,8 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use App\models\FFAirports;
 use Illuminate\Routing\Controller;
 
-class FFAirportssController extends Controller {
+class FFAirportsController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -10,9 +11,14 @@ class FFAirportssController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function adminIndex()
 	{
-		//
+        $configuration ['title'] = "Airports";
+        $configuration ['list'] = FFAirports::get()->toArray();
+        $configuration ['new'] = route('app.airports.create');
+        $configuration ['edit'] = 'app.airports.edit';
+        $configuration ['showDelete'] = 'app.airports.destroy';
+        return view('admin.adminList', $configuration);
 	}
 
 	/**
@@ -21,7 +27,7 @@ class FFAirportssController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function adminCreate()
 	{
 		//
 	}
@@ -32,7 +38,7 @@ class FFAirportssController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function adminStore()
 	{
 		//
 	}
@@ -44,7 +50,7 @@ class FFAirportssController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function adminShow($id)
 	{
 		//
 	}
@@ -56,7 +62,7 @@ class FFAirportssController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function adminEdit($id)
 	{
 		//
 	}
@@ -68,7 +74,7 @@ class FFAirportssController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function adminUpdate($id)
 	{
 		//
 	}
@@ -80,7 +86,7 @@ class FFAirportssController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function adminDestroy($id)
 	{
 		//
 	}
