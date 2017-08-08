@@ -102,7 +102,8 @@ class FFAirportsController extends Controller
      */
     public function adminDestroy($id)
     {
-        //
+        FFAirports::destroy($id);
+        return json_encode(["success" => true, "id" => $id]);
     }
 
 }

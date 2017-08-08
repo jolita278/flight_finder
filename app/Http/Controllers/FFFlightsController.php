@@ -105,7 +105,8 @@ class FFFlightsController extends Controller {
 	 */
 	public function adminDestroy($id)
 	{
-		//
+        FFFlights::destroy($id);
+        return json_encode(["success" => true, "id" => $id]);
 	}
 
 }

@@ -46,7 +46,6 @@ class FFAirlinesController extends Controller {
 
         FFAirlines::create([
             'name' => $data['name'],
-
         ]);
 
         return redirect(route('app.airlines.index'));
@@ -97,7 +96,8 @@ class FFAirlinesController extends Controller {
 	 */
 	public function adminDestroy($id)
 	{
-		//
+        FFAirlines::destroy($id);
+        return json_encode(["success" => true, "id" => $id]);
 	}
 
 }
