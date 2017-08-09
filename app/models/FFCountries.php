@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class FFCountries extends Model
 {
+    public $incrementing = false;
+
     /**
      * Database table name
      * @var string

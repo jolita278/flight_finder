@@ -9,7 +9,9 @@ class FFAirports extends Model
 {
     use SoftDeletes;
 
-    public $hidden = ['deleted_at'];
+    public $incrementing = false;
+
+    public $hidden = ['deleted_at', 'country_id'];
     /**
      * Database table name
      * @var string
@@ -21,7 +23,6 @@ class FFAirports extends Model
      */
     protected $fillable = ['id', 'name', 'country_id', 'city'];
 
-    public $incrementing = false;
 
     public function country(){
 

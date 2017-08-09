@@ -17,8 +17,6 @@ class FFFlightsController extends Controller {
 	{
         $configuration ['title'] = "Flights";
         $configuration ['list'] = FFFlights::with('airline','origin_airport', 'destination_airport')->get()->toArray();
-        $config['airlines'] = FFAirlines::all()->pluck('name')->toArray();
-
 
         $configuration ['new'] = route('app.flights.create');
         $configuration ['edit'] = 'app.flights.edit';
@@ -85,7 +83,15 @@ class FFFlightsController extends Controller {
 	 */
 	public function adminEdit($id)
 	{
-		//
+        $configuration ['route'] = 'app.flights.edit';
+        $configuration ['title'] = "Edit Flight record";
+        $configuration['item'] = FFFlights::find($id);
+        $configuration['item']->pluck('id')->toArray();
+        $configuration ['destination'] = FFAirports::pluck('name', 'id')->toArray();
+        $configuration ['origin'] = FFAirports::pluck('name', 'id')->toArray();
+        $configuration ['airline_id'] = FFAirlines::pluck('name', 'id')->toArray();
+
+        return view('admin.adminFormFlights', $configuration);
 	}
 
 	/**
@@ -97,7 +103,12 @@ class FFFlightsController extends Controller {
 	 */
 	public function adminUpdate($id)
 	{
-		//
+        $data = request()->all();
+        $record =FFFlights::find($id);
+        $record->update($data);
+
+
+        return redirect(route('app.flights.index'));
 	}
 
 	/**

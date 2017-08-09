@@ -4,29 +4,49 @@
     <div class="container">
 
         <h2>{{$title}}</h2>
+        @if(isset($item['id']))
+            {!!Form::open(['url' => route($route, $item['id'])]) !!}
+            <br>
 
-        {!! Form::open(['url' => route('app.flights.create')]) !!}
-        <br>
+            {{ Form::label('airline_id','Airline') }}
+            {{ Form::select('airline_id', $airline_id, $item['airline_id'], ['class' => 'form-control', 'placeholder' => 'Please Select'])}}
+            <br>
+            <br>
+            {{ Form::label('destination','Destination') }}
+            {{ Form::select('destination', $destination, $item['destination'], ['class' => 'form-control', 'placeholder' => 'Please Select']) }}
+            <br>
+            {{ Form::label('origin','Origin') }}
+            {{ Form::select('origin',$origin ,$item['origin'], ['class' => 'form-control', 'placeholder' => 'Please Select']) }}
+            <br>
 
-        {{ Form::label('airline_id','Airline') }}
-        {{ Form::select('airline_id', $airline_id, null, ['class' => 'form-control', 'placeholder' => 'Please Select'])}}
-        <br>
-        <br>
-        {{ Form::label('destination','Destination') }}
-        {{ Form::select('destination', $destination, null, ['class' => 'form-control', 'placeholder' => 'Please Select']) }}
-        <br>
-        {{ Form::label('origin','Origin') }}
-        {{ Form::select('origin',$origin ,null, ['class' => 'form-control', 'placeholder' => 'Please Select']) }}
-        <br>
+            {{ Form::label('depature', 'Departure date')}}<br>
+            {{Form::text('depature', $item['depature'], array('class' => 'form-control datepicker','placeholder' => 'Select Date'))}}
+            <br>
+            {{ Form::label('arival', 'Arrival date')}}<br>
+            {{Form::text('arival', $item['arival'], array('class' => 'form-control datepicker','placeholder' => 'Select Date'))}}
 
-        {{ Form::label('depature', 'Departure date')}}<br>
-        {{Form::text('depature', null, array('class' => 'form-control datepicker','placeholder' => 'Select Date'))}}
-        <br>
-        {{ Form::label('arival', 'Arrival date')}}<br>
-        {{Form::text('arival', null, array('class' => 'form-control datepicker','placeholder' => 'Select Date'))}}
-        <br>
+        @else
+            {!! Form::open([$route]) !!}
+            <br>
 
+            {{ Form::label('airline_id','Airline') }}
+            {{ Form::select('airline_id', $airline_id, null, ['class' => 'form-control', 'placeholder' => 'Please Select'])}}
+            <br>
+            <br>
+            {{ Form::label('destination','Destination') }}
+            {{ Form::select('destination', $destination, null, ['class' => 'form-control', 'placeholder' => 'Please Select']) }}
+            <br>
+            {{ Form::label('origin','Origin') }}
+            {{ Form::select('origin',$origin ,null, ['class' => 'form-control', 'placeholder' => 'Please Select']) }}
+            <br>
 
+            {{ Form::label('depature', 'Departure date')}}<br>
+            {{Form::text('depature', null, array('class' => 'form-control datepicker','placeholder' => 'Select Date'))}}
+            <br>
+            {{ Form::label('arival', 'Arrival date')}}<br>
+            {{Form::text('arival', null, array('class' => 'form-control datepicker','placeholder' => 'Select Date'))}}
+        @endif
+        <br>
         <br>
 
         {{ Form::submit('Save', ['class' => 'btn']) }}
@@ -37,11 +57,11 @@
 
 @endsection
 @section('scripts')
-<script>
-    $('.datepicker').datepicker({
-        format: 'yyyy-mm-dd'
-    });
-</script>
+    <script>
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd'
+        });
+    </script>
 
 @endsection
 

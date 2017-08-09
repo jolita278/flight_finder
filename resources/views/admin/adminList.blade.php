@@ -12,7 +12,6 @@
                         New</a>
                     <hr/>
                 @endif
-                {{--{{dd($list)}}--}}
                 @if(sizeof($list)>0)
                     <thead>
                     <tr>
@@ -31,7 +30,11 @@
                             @foreach ($record as $key => $value)
 
                                 <td>
-                                    @if($key == 'airline')
+                                    @if($key == 'country')
+
+                                        {{$value['original_name']}}
+
+                                    @elseif($key == 'airline')
 
                                         {{$value['name']}}
 
@@ -48,7 +51,6 @@
                                         {{$value['name']}} {{'('}} {{$value['id']}} {{')'}} {{$value['city']}}
 
                                     @else
-
 
                                         {{$value}}
 

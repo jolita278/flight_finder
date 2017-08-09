@@ -16,7 +16,8 @@ class FFAirportsController extends Controller
     public function adminIndex()
     {
         $configuration ['title'] = "Airports";
-        $configuration ['list'] = FFAirports::get()->toArray();
+        $configuration ['list'] = FFAirports::with('country')->get()->toArray();
+
         $configuration ['new'] = route('app.airports.create');
         $configuration ['edit'] = 'app.airports.edit';
         $configuration ['showDelete'] = 'app.airports.destroy';
@@ -78,7 +79,13 @@ class FFAirportsController extends Controller
      */
     public function adminEdit($id)
     {
-        //
+        $configuration ['route'] = 'app.airports.edit';
+        $configuration ['title'] = "Edit Airport record";
+        $configuration['item'] = FFAirports::find($id);
+        $configuration['item']->pluck('id')->toArray();
+        $configuration ['country'] = FFCountries::pluck('original_name', 'id')->toArray();
+
+        return view('admin.adminFormAirports', $configuration);
     }
 
     /**
@@ -90,7 +97,12 @@ class FFAirportsController extends Controller
      */
     public function adminUpdate($id)
     {
-        //
+        $data = request()->all();
+        $record =FFAirports::find($id);
+        $record->update($data);
+
+
+        return redirect(route('app.airports.index'));
     }
 
     /**

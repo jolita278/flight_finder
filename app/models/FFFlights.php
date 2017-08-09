@@ -5,7 +5,6 @@ namespace App\models;
 
 class FFFlights extends CoreModel
 {
-
     /**
      * Database table name
      * @var string
@@ -18,6 +17,8 @@ class FFFlights extends CoreModel
     protected $fillable = ['id', 'airline_id', 'arival', 'depature', 'destination', 'origin' ];
 
     public $hidden = ['count','deleted_at', 'airline_id','destination', 'origin' ];
+
+
 
     public function airline(){
 
