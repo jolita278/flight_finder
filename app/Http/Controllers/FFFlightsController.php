@@ -16,7 +16,10 @@ class FFFlightsController extends Controller {
 	public function adminIndex()
 	{
         $configuration ['title'] = "Flights";
-        $configuration ['list'] = FFFlights::get()->toArray();
+        $configuration ['list'] = FFFlights::with('airline','origin_airport', 'destination_airport')->get()->toArray();
+        $config['airlines'] = FFAirlines::all()->pluck('name')->toArray();
+
+
         $configuration ['new'] = route('app.flights.create');
         $configuration ['edit'] = 'app.flights.edit';
         $configuration ['showDelete'] = 'app.flights.destroy';
@@ -48,6 +51,7 @@ class FFFlightsController extends Controller {
 	public function adminStore()
 	{
         $data = request()->all();
+//        dd($data);
 
         FFFlights::create([
             'airline_id' => $data['airline_id'],

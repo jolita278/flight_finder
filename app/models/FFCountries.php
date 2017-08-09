@@ -15,5 +15,5 @@ class FFCountries extends Model
      * Fillable column names
      * @var array
      */
-    protected $fillable = ['id', 'original_name', ];
+    protected $fillable = ['id', 'original_name'];
 }

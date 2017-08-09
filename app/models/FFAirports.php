@@ -22,4 +22,9 @@ class FFAirports extends Model
     protected $fillable = ['id', 'name', 'country_id', 'city'];
 
     public $incrementing = false;
+
+    public function country(){
+
+        return $this->hasOne(FFCountries::class, 'id', 'country_id');
+    }
 }

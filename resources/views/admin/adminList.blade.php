@@ -12,6 +12,7 @@
                         New</a>
                     <hr/>
                 @endif
+                {{--{{dd($list)}}--}}
                 @if(sizeof($list)>0)
                     <thead>
                     <tr>
@@ -30,7 +31,28 @@
                             @foreach ($record as $key => $value)
 
                                 <td>
-                                    {{$value}}
+                                    @if($key == 'airline')
+
+                                        {{$value['name']}}
+
+                                    @elseif($key == 'airline')
+
+                                        {{$value['name']}}
+
+                                    @elseif($key == 'origin_airport')
+
+                                       {{$value['name']}} {{'('}} {{$value['id']}} {{')'}} {{$value['city']}}
+
+                                    @elseif($key == 'destination_airport')
+
+                                        {{$value['name']}} {{'('}} {{$value['id']}} {{')'}} {{$value['city']}}
+
+                                    @else
+
+
+                                        {{$value}}
+
+                                    @endif
 
                                 </td>
                             @endforeach
@@ -54,7 +76,7 @@
 
                     </tbody>
                 @else
-                        <h2>No items in database!</h2>
+                    <h2>No items in database!</h2>
                 @endif
             </table>
         </div>

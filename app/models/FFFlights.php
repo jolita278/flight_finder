@@ -16,4 +16,20 @@ class FFFlights extends CoreModel
      * @var array
      */
     protected $fillable = ['id', 'airline_id', 'arival', 'depature', 'destination', 'origin' ];
+
+    public $hidden = ['count','deleted_at', 'airline_id','destination', 'origin' ];
+
+    public function airline(){
+
+        return $this->hasOne(FFAirlines::class, 'id', 'airline_id');
+    }
+    public function origin_airport(){
+
+        return $this->hasOne(FFAirports::class, 'id', 'origin');
+    }
+    public function destination_airport(){
+
+        return $this->hasOne(FFAirports::class, 'id', 'destination');
+    }
+
 }

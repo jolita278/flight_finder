@@ -9,12 +9,12 @@
         <br>
 
         {{ Form::label('name', 'Airline name')}}<br>
-        {{Form::text('name')}}
+        {{Form::text('name',null, ['class' => 'form-control'])}}
 
         <br>
         <br>
 
-        {{ Form::submit('Save') }}
+        {{ Form::submit('Save', ['class' => 'btn']) }}
 
         {!! Form::close() !!}
 

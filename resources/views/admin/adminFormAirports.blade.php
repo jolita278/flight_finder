@@ -7,27 +7,22 @@
 
         {!! Form::open(['url' => route('app.airports.create')]) !!}
         <br>
-        <div class="form-group">
-        {{ Form::label('id', 'Custom airport code', ['class' => 'col-lg-2 control-label'])}}
-            <div class="col-lg-10">
-        {{Form::text('id')}}
-            </div>
-        </div>
+        {{ Form::label('id', 'Custom airport code')}}
+        {{Form::text('id',null, ['class' => 'form-control'])}}
+
         <br>
         {{ Form::label('name', 'Airport name')}}<br>
-        {{Form::text('name')}}
+        {{Form::text('name', null, ['class' => 'form-control'])}}
         <br>
         {{ Form::label('country_id','Country') }}
-        {{ Form::select('country_id',$country) }}
+        {{ Form::select('country_id',$country ,null, ['class' => 'form-control', 'placeholder' => 'Please Select']) }}
+
         <br>
         {{ Form::label('city', 'City')}}<br>
-        {{Form::text('city')}}
+        {{Form::text('city' ,null, ['class' => 'form-control'])}}
         <br>
 
-        <br>
-        <br>
-
-        {{ Form::submit('Save') }}
+        {{ Form::submit('Save', ['class' => 'btn']) }}
 
         {!! Form::close() !!}
 
