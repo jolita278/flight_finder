@@ -14,7 +14,7 @@
             {{Form::text('name',$item['name'], ['class' => 'form-control'])}}
 
         @else
-            {!! Form::open([$route]) !!}
+            {!! Form::open(['url' => route($route)]) !!}
 
         <br>
 
