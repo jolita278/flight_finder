@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -19,8 +8,8 @@ Auth::routes();
 //
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'admin'], function () {
-    Route::get('/', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth']], function () {
+    Route::get('/', ['as' => 'app.flights.index', 'uses' => 'FFFlightsController@adminIndex']);
 
     Route::group(['prefix' => 'airlines'], function () {
         Route::get('/', ['as' => 'app.airlines.index', 'uses' => 'FFAirlinesController@adminIndex']);
@@ -55,4 +44,11 @@ Route::group(['prefix' => 'admin'], function () {
             Route::delete('/delete', ['as' => 'app.flights.destroy', 'uses' => 'FFFlightsController@adminDestroy']);
         });
     });
+});
+
+Route::group(['prefix' => 'generate-fd'], function () {
+    Route::get('/airports/{count?}', ['uses' => 'FakeDataController@generateAirports']);
+    Route::get('/airlines/{count?}', ['uses' => 'FakeDataController@generateAirlines']);
+    Route::get('/flights/{count?}', ['uses' => 'FakeDataController@generateFlights']);
+
 });

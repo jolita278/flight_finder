@@ -17,7 +17,6 @@ class FFFlightsController extends Controller {
 	{
         $configuration ['title'] = "Flights";
         $configuration ['list'] = FFFlights::with('airline','origin_airport', 'destination_airport')->get()->toArray();
-
         $configuration ['new'] = route('app.flights.create');
         $configuration ['edit'] = 'app.flights.edit';
         $configuration ['showDelete'] = 'app.flights.destroy';
@@ -32,6 +31,7 @@ class FFFlightsController extends Controller {
 	 */
 	public function adminCreate()
 	{
+        $configuration ['route'] ="app.flights.create";
         $configuration ['title'] = "New Flight record";
         $configuration ['destination'] = FFAirports::pluck('name', 'id')->toArray();
         $configuration ['origin'] = FFAirports::pluck('name', 'id')->toArray();

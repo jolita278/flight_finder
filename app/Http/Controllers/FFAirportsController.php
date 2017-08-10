@@ -32,6 +32,7 @@ class FFAirportsController extends Controller
      */
     public function adminCreate()
     {
+        $configuration ['route'] ="app.airports.create";
         $configuration ['title'] = "New Airport record";
         $configuration ['country'] = FFCountries::pluck('original_name', 'id')->toArray();
 
